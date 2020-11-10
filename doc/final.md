@@ -1,1 +1,0 @@
-checkpoint and final writeup 
