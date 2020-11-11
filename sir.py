@@ -106,9 +106,6 @@ def sir_model_simulation(N, b, k, T):
     return counts_I,counts_R,counts_S
         
 
-def f(t, v):
-    return [-b * v[0] * v[1], b * v[0] * v[1] - k * v[1], k * v[1]]
-
 def ODE_simulation(N,b,k,T):
     """
     An ODE simulation that model time dependent variables: S, I, R
@@ -122,6 +119,9 @@ def ODE_simulation(N,b,k,T):
     T: simulation time period
     
     """
+    def f(t, v):
+        return [-b * v[0] * v[1], b * v[0] * v[1] - k * v[1], k * v[1]]
+    
     v0 = [(N-1)/N,1/N,0] ## One person is infectious while others are susceptible
     t_span = [0,T]
     t_eval = list(range(T))
