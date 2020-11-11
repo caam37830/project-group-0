@@ -62,7 +62,7 @@ def count_susceptible(pop):
     return sum((p.get_state() == "S") for p in pop)
 
 
-def sir_model_simulation(N, b, k, T):    
+def sir_model_simulation(N, b, k, T, I0):    
     """
     simulate a population, where people interact and change state according to the model parameters.
     
@@ -74,9 +74,14 @@ def sir_model_simulation(N, b, k, T):
     
     T: simulation time period
     
+    I0: Initial number of infectious individuals
+    
     """
+    
     pop = [Person() for i in range(N)] # our population
-    pop[0].infected()
+    initial = randint(N, size=I0)
+    for j in initial:
+        pop[j].infected()
     counts_I = [count_infectious(pop)]
     counts_R = [count_removed(pop)]
     counts_S = [count_susceptible(pop)]
@@ -106,7 +111,7 @@ def sir_model_simulation(N, b, k, T):
     return counts_I,counts_R,counts_S
         
 
-def ODE_simulation(N,b,k,T):
+def ODE_simulation(N,b,k,T,I0):
     """
     An ODE simulation that model time dependent variables: S, I, R
     
@@ -118,14 +123,14 @@ def ODE_simulation(N,b,k,T):
     
     T: simulation time period
     
+    I0: Initial number of infectious individuals
+    
     """
     def f(t, v):
         return [-b * v[0] * v[1], b * v[0] * v[1] - k * v[1], k * v[1]]
     
-    v0 = [(N-1)/N,1/N,0] ## One person is infectious while others are susceptible
+    v0 = [(N-I0)/N,I0/N,0] ## One person is infectious while others are susceptible
     t_span = [0,T]
     t_eval = list(range(T))
     sol = solve_ivp(f, t_span, v0, t_eval=t_eval)
     return sol
-
-        
