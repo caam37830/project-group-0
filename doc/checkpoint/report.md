@@ -1,11 +1,7 @@
-# Checkpoint Report - Group 0
-
-This mideterm checkpoint report has 4 sections:
-
-1. A brief introduction to the SIR model, and notation you will use.  You can use [`SIR.md`](SIR.md), as well as other resources (cite any other resources that contribute to your discussion).
-2. A brief description of how you are structuring the Python package `sir`.
-3. Report on your preliminary investigations using the agent-based and continuous models.
-4. Your proposed variations/improvements for the final project.
+## <center>Preliminary Report of the Susceptible-Infected-Removed (SIR) Model for Disease Spread
+<center>$\textit{Yu An 12249123}$
+<center>$\textit{Shu Han 12249123}$
+<center>$\textit{Yun Lin 12249123}$
 
 ## Section 1 - Introduction to SIR model
 
@@ -24,5 +20,56 @@ where `s`,`i` and `r` here are the percentage of each group over the total popul
 ## Section 2 - Decription of sir package
 
 ## Section 3 - Preliminary investigations
+In this section, the population size is assumed to be 10000. The initial condition is that 0.1% of the population has been infected, while others remian susceptible. $\textit{b}$ denotes the number of interactions each day that could spread the disease (per individual) and $\textit{k}$ denotes the fraction of the infectious population which recovers each day.
 
-## Section 4 - Improvements proposal
+### 3.1 ODE simulation
+<center><img src="Example_plot_ode.png" width="70%"/>
+<center>$\textit{Image 1: Example plot for ODE simulation under different values of b and k.}$</center>
+    
+Here we simulated the S, I, R populations over time under different b and k. It is obvious that if k is approximate zero, the infected population gets larger but cannot recover, hence all population will get infected eventually. It is also obvious that if k is approximate one, infectious people are sure to removed, hence no more susceptible people get infected. This two special but trival cases were not simulated. We simulated under b,k=1/5,2/5,3/5,4/5 and it can be seen from the plot that 
+
+1. If k = b, there will be a very small surge of infectious population (less than 10% of total population), so the susceptible population decrease a bit. Soon the infectious population will decrease to around zero since they are removed (recovered or dead).
+
+2. If k > b, there will almost no surge of infectious population, the infectious population will soon removed. The susceptible population remains uninfected.
+
+3. If k < b, there will be a significant surge of infectious population. As k is significantly larger than zero, the infectious population will eventually recovered. Moreover, when k < b, the larger the difference between b and k, the greater the surge will be.
+
+In order to have a closer look at the qualitative behavior of the simulations based on the parameters b and k, we drew phase diagrams to look at the each population proportion with respect to k and b at several time points (T=20,40,60,80).
+
+
+<center><img src="phase_diagram_ODE_I.png" width="70%"/>
+<center>$\textit{Image 2: Phase diagram of infectious population for ODE simulation}$</center>
+    
+From the four phase diagrams above for infectious population, it can be seen that
+1. The dark area on top right of each diagram indicates that if k > b, infectious population size is close to zero all the time, which means that there is almost no surge of infectious population and the initial infectious people are removed. It agrees with the result of Image 1. 
+    
+2. The lighter area first appears in the lower left corner, then moves in the upper right and become darker itself at the same time. It indicates that if k < b, when the difference between k and b is larger, the surge of infecious population appears earlier, greater. It is also earlier and quicker for the infectious population goes to zero.
+
+
+
+<center><img src="phase_diagram_ODE_S.png" width="70%"/>
+<center><img src="phase_diagram_ODE_R.png" width="70%"/>
+<center>$\textit{Image 3: Phase diagrams of susceptible and removed population for ODE simulation}$</center>
+    
+From the diagrams above for susceptible and removed population, it can be seen that
+1. If k > b, susceptible population proportion is always close to one and removed population proportion is always close to zero, since there are almost no more infected people.
+    
+2. IF k < b, After the surge and recover of infectious population, the susceptible population proportion at the end is greater when the difference between b and k is greater 
+
+### 3.2 Agent-based model simulation
+<center><img src="Example_plot_discrete.png" width="70%"/>
+<center>$\textit{Image 3: Example plot for agent-based model simulation under different values of b and k.}$</center>
+    
+The example plot for agent-based model simulation agrees with that for ODE simulation. We then also drew 12 phase diagrams to see the qualitative behavior of the simulations based on the parameters b and k:
+
+
+<center><img src="phase_diagram_discrete_I.png" width="70%"/>
+<center><img src="phase_diagram_discrete_S.png" width="70%"/>
+<center><img src="phase_diagram_discrete_R.png" width="70%"/>
+<center>$\textit{Image 3: Phase diagrams of susceptible and removed population for agent-based model simulation}$</center>
+    
+These phase diagrams also agrees with that for ODE simulations, though they are not as smooth as plots for ODE simulations.
+
+    
+ 
+## Section 4 - Improvements proposals
