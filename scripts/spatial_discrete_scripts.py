@@ -3,6 +3,8 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 import sir
+import numpy as np
+import matplotlib.pyplot as plt
 
 N = 10000
 b = 1/2
