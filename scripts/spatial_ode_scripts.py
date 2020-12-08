@@ -43,7 +43,7 @@ for ind in tqdm(range(len(p_list))):
     i = ind//3
     j = ind%3
     p = p_list[ind]
-    sol = spatial_PDE(N,b,k,p,T,I0,M=M)
+    sol = sir.spatial_PDE(N,b,k,p,T,I0,M=M)
 
     S = []
     I = []
@@ -105,7 +105,7 @@ I0 = np.zeros((M,M))
 I0[0:5,0:5] = midpart[:,:]
 I0 = I0.flatten()       
         
-sol = spatial_PDE(N,b,k,p,T,I0,M)
+sol = sir.spatial_PDE(N,b,k,p,T,I0,M)
 
 S = []
 I = []
@@ -130,7 +130,7 @@ I0 = np.zeros((M,M))
 I0[48:53,48:53] = midpart[:,:]
 I0 = I0.flatten()       
         
-sol = spatial_PDE(N,b,k,p,T,I0,M)
+sol = sir.spatial_PDE(N,b,k,p,T,I0,M)
 
 S = []
 I = []
@@ -153,7 +153,7 @@ ax[1].set_title(f"I0 at center",fontsize=10)
 ## 2
 I0 = np.random.choice([1]*i0+[0]*(M*M-i0), size=(M**2), replace=False)      
         
-sol = spatial_PDE(N,b,k,p,T,I0,M)
+sol = sir.spatial_PDE(N,b,k,p,T,I0,M)
 
 S = []
 I = []

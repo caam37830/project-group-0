@@ -25,7 +25,7 @@ for i,beta in enumerate(beta_list):
     gamma = gamma_list[0]
     delta = delta_list[0]
     theta = theta_list[1]
-    sol = SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
+    sol = sir.SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
     equil_state_day = int(np.ceil(sol.t_events))
     equil_state_S = int(sol.y[0][equil_state_day])
     equil_state_I = int(sol.y[1][equil_state_day])
@@ -63,7 +63,7 @@ for i,gamma in enumerate(gamma_list):
     beta = beta_list[0]
     delta = delta_list[0]
     theta = theta_list[1]
-    sol = SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
+    sol = sir.SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
     equil_state_day = int(np.ceil(sol.t_events))
     equil_state_S = int(sol.y[0][equil_state_day])
     equil_state_I = int(sol.y[1][equil_state_day])
@@ -102,7 +102,7 @@ for i,theta in enumerate(theta_list):
     beta = beta_list[0]
     delta = delta_list[0]
     gamma = gamma_list[0]
-    sol = SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
+    sol = sir.SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
     equil_state_day = int(np.ceil(sol.t_events))
     equil_state_S = int(sol.y[0][equil_state_day])
     equil_state_I = int(sol.y[1][equil_state_day])
@@ -140,7 +140,7 @@ for i,delta in enumerate(delta_list):
     beta = beta_list[0]
     theta = theta_list[1]
     gamma = gamma_list[0]
-    sol = SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
+    sol = sir.SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0)
     equil_state_day = int(np.ceil(sol.t_events))
     equil_state_S = int(sol.y[0][equil_state_day])
     equil_state_I = int(sol.y[1][equil_state_day])
@@ -173,7 +173,7 @@ gamma = gamma_list[0]
 delta = delta_list[0]
 theta = theta_list[1]
 
-sol = SIRDC_time_varying_simulation(N,gamma,theta,delta,T,I0)
+sol = sir.SIRDC_time_varying_simulation(N,gamma,theta,delta,T,I0)
 
 plt.plot(sol.t, sol.y[5])
 plt.title('time-varying beta with quarantine being practiced')
