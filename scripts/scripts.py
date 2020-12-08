@@ -1,4 +1,9 @@
-from sir import *
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+import sir
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from matplotlib.ticker import MultipleLocator, FixedLocator, FixedFormatter
@@ -21,7 +26,7 @@ for i in range(m):
     for j in range(n):
         k = k_list[i]
         b = b_list[j]
-        counts_I,counts_R,counts_S = sir_model_simulation(N, b, k, T,I0) 
+        counts_I,counts_R,counts_S = sir.sir_model_simulation(N, b, k, T,I0) 
         ax[i,j].plot(np.array(counts_S)/N, label="susceptible", c='g')
         ax[i,j].plot(np.array(counts_I)/N, label="infectious", c='r')
         ax[i,j].plot(np.array(counts_R)/N, label="removed", c='b')
@@ -52,7 +57,7 @@ for i in range(len(b_list)):
     for j in range(len(k_list)):
         b = b_list[i]
         k = k_list[j]
-        counts_I,counts_R,counts_S = sir_model_simulation(N, b, k, T,I0)
+        counts_I,counts_R,counts_S = sir.sir_model_simulation(N, b, k, T,I0)
         counts_S_20[i,j]=counts_S[19]/N
         counts_S_40[i,j]=counts_S[39]/N
         counts_S_60[i,j]=counts_S[59]/N
@@ -240,7 +245,7 @@ for i in range(m):
     for j in range(n):
         k = k_list[i]
         b = b_list[j]
-        sol = ODE_simulation(N,b,k,T,I0)
+        sol = sir.ODE_simulation(N,b,k,T,I0)
         ax[i,j].plot(sol.t, sol.y[0], label="susceptible", c='g')
         ax[i,j].plot(sol.t, sol.y[1], label="infectious", c='r')
         ax[i,j].plot(sol.t, sol.y[2], label="removed", c='b')
