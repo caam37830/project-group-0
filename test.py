@@ -38,13 +38,13 @@ class TestSIR(unittest.TestCase):
             self.pop[i].remove()
         
     def test_count_infectious(self):
-        self.assertTrue(count_infectious(self.pop) == 10)
+        self.assertTrue(sir.count_infectious(self.pop) == 10)
 
     def test_count_removed(self):
-        self.assertTrue(count_removed(self.pop) == 10)
+        self.assertTrue(sir.count_removed(self.pop) == 10)
         
     def test_count_susceptible(self):
-        self.assertTrue(count_susceptible(self.pop) == 10)
+        self.assertTrue(sir.count_susceptible(self.pop) == 10)
         
 #     def test_sir_model_simulation(self):
 #         N = 5000
