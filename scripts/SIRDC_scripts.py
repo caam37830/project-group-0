@@ -31,8 +31,7 @@ for i,beta in enumerate(beta_list):
     equil_state_I = int(sol.y[1][equil_state_day])
     equil_state_R = int(sol.y[2][equil_state_day])
     equil_state_D = int(sol.y[3][equil_state_day])
-    equil_state_C = int(N - equil_state_S - equil_state_I - equil_state_R - equil_state_D)
-    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D,equil_state_C])
+    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D])
 
     ax[i].plot(sol.t, sol.y[0], label="susceptible", c='g')
     ax[i].plot(sol.t, sol.y[1], label="infected", c='r')
@@ -50,8 +49,7 @@ for i in range(3):
           ', number of susceptibles stays constant at', equil_state_list[i][1],
           ', with number of infected to be', equil_state_list[i][2],
           ', number of resolved to be', equil_state_list[i][3],
-          ', number of died to be', equil_state_list[i][4],
-          'and number of recovered to be', equil_state_list[i][5])
+          ', number of died to be', equil_state_list[i][4])
     
 #different gamma values
 m, n = 1,3 # rows, columns of subplots
@@ -69,8 +67,7 @@ for i,gamma in enumerate(gamma_list):
     equil_state_I = int(sol.y[1][equil_state_day])
     equil_state_R = int(sol.y[2][equil_state_day])
     equil_state_D = int(sol.y[3][equil_state_day])
-    equil_state_C = int(N - equil_state_S - equil_state_I - equil_state_R - equil_state_D)
-    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D,equil_state_C])
+    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D])
 
     ax[i].plot(sol.t, sol.y[0], label="susceptible", c='g')
     ax[i].plot(sol.t, sol.y[1], label="infected", c='r')
@@ -88,9 +85,7 @@ for i in range(3):
           ', number of susceptibles stays constant at', equil_state_list[i][1],
           ', with number of infected to be', equil_state_list[i][2],
           ', number of resolved to be', equil_state_list[i][3],
-          ', number of died to be', equil_state_list[i][4],
-          'and number of recovered to be', equil_state_list[i][5])
-    
+          ', number of died to be', equil_state_list[i][4])
     
 # different theta values
 m, n = 1,3 # rows, columns of subplots
@@ -108,8 +103,7 @@ for i,theta in enumerate(theta_list):
     equil_state_I = int(sol.y[1][equil_state_day])
     equil_state_R = int(sol.y[2][equil_state_day])
     equil_state_D = int(sol.y[3][equil_state_day])
-    equil_state_C = int(N - equil_state_S - equil_state_I - equil_state_R - equil_state_D)
-    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D,equil_state_C])
+    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D])
 
     ax[i].plot(sol.t, sol.y[0], label="susceptible", c='g')
     ax[i].plot(sol.t, sol.y[1], label="infected", c='r')
@@ -127,8 +121,7 @@ for i in range(3):
           ', number of susceptibles stays constant at', equil_state_list[i][1],
           ', with number of infected to be', equil_state_list[i][2],
           ', number of resolved to be', equil_state_list[i][3],
-          ', number of died to be', equil_state_list[i][4],
-          'and number of recovered to be', equil_state_list[i][5])
+          ', number of died to be', equil_state_list[i][4])
     
 #different delta values
 m, n = 1,3 # rows, columns of subplots
@@ -146,8 +139,7 @@ for i,delta in enumerate(delta_list):
     equil_state_I = int(sol.y[1][equil_state_day])
     equil_state_R = int(sol.y[2][equil_state_day])
     equil_state_D = int(sol.y[3][equil_state_day])
-    equil_state_C = int(N - equil_state_S - equil_state_I - equil_state_R - equil_state_D)
-    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D,equil_state_C])
+    equil_state_list.append([equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D])
 
     ax[i].plot(sol.t, sol.y[0], label="susceptible", c='g')
     ax[i].plot(sol.t, sol.y[1], label="infected", c='r')
@@ -160,13 +152,12 @@ lines, labels = fig.axes[-1].get_legend_handles_labels()
 fig.legend(lines,labels,bbox_to_anchor=(1.01, 0.9), loc = 'upper right')
 
 for i in range(3):
-    print('For theta =', theta_list[i], 
+    print('For delta =', delta_list[i], 
           ', on Day', equil_state_list[i][0],
           ', number of susceptibles stays constant at', equil_state_list[i][1],
           ', with number of infected to be', equil_state_list[i][2],
           ', number of resolved to be', equil_state_list[i][3],
-          ', number of died to be', equil_state_list[i][4],
-          'and number of recovered to be', equil_state_list[i][5])
+          ', number of died to be', equil_state_list[i][4])
     
 #time-varying beta
 gamma = gamma_list[0]
@@ -191,11 +182,9 @@ equil_state_S = int(sol.y[0][equil_state_day])
 equil_state_I = int(sol.y[1][equil_state_day])
 equil_state_R = int(sol.y[2][equil_state_day])
 equil_state_D = int(sol.y[3][equil_state_day])
-equil_state_C = int(N - equil_state_S - equil_state_I - equil_state_R - equil_state_D)
-equil_state_list = [equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D,equil_state_C]
+equil_state_list = [equil_state_day,equil_state_S,equil_state_I,equil_state_R,equil_state_D]
 print('On Day', equil_state_list[0],
       ', number of susceptibles stays constant at', equil_state_list[1],
       ', with number of infected to be', equil_state_list[2],
       ', number of resolved to be', equil_state_list[3],
-      ', number of died to be', equil_state_list[4],
-      'and number of recovered to be', equil_state_list[5])
+      ', number of died to be', equil_state_list[4])

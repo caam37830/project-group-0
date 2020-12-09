@@ -35,7 +35,7 @@ def SIRDC_ODE_simulation(N,beta,gamma,theta,delta,T,I0):
         return [dSdt, dIdt, dRdt, dDdt, dCdt]
     
     def equil_state(t, v):
-        return (beta * v[0] * v[1]) / N - 1
+        return (beta * v[0] * v[1]) / N -0.01
     
     v0 = [(N-I0), I0, 0, 0, 0]
     t_span = [0,T]
