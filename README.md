@@ -1,6 +1,6 @@
 # Susceptible-Infected-Removed (SIR) Disease Spread Model Simulations and Variations
 
-## STAT 37830 Project - Group 0
+### STAT 37830 Project - Group 0
 
 ### Authors: Yu An, Frieda Han, Yun Lin
 
