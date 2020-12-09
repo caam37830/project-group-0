@@ -23,7 +23,7 @@ fig.suptitle("compare S,U,Q,C,I populations with different a",fontsize=20)
 for i,a in enumerate(a_list):
     b = b_list[0]
     c = c_list[1]
-    sol = SUQC_ODE_simulation(N,a,b,c,T,I0)
+    sol = sir.SUQC_ODE_simulation(N,a,b,c,T,I0)
     bal_state_day = int(np.ceil(sol.t_events))
     bal_state_S = int(np.ceil(sol.y[0][bal_state_day]))
     bal_state_I = int(np.ceil(N - bal_state_S))
@@ -54,7 +54,7 @@ bal_state_list = []
 for i,b in enumerate(b_list):
     a = a_list[0]
     c = c_list[1]
-    sol = SUQC_ODE_simulation(N,a,b,c,T,I0)
+    sol = sir.SUQC_ODE_simulation(N,a,b,c,T,I0)
     bal_state_day = int(np.ceil(sol.t_events))
     bal_state_S = int(np.ceil(sol.y[0][bal_state_day]))
     bal_state_I = int(np.ceil(N - bal_state_S))
@@ -84,7 +84,7 @@ bal_state_list = []
 for i,c in enumerate(c_list):
     a = a_list[1]
     b = b_list[1]
-    sol = SUQC_ODE_simulation(N,a,b,c,T,I0)
+    sol = sir.SUQC_ODE_simulation(N,a,b,c,T,I0)
     bal_state_day = int(np.ceil(sol.t_events))
     bal_state_S = int(np.ceil(sol.y[0][bal_state_day]))
     bal_state_I = int(np.ceil(N - bal_state_S))
