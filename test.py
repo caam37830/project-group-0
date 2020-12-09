@@ -1,7 +1,7 @@
 # unit tests
 
 import unittest
-from sir import *
+import sir
 import numpy as np
 
 class TestPerson(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestPerson(unittest.TestCase):
     """
     
     def setUp(self):
-        ppl = Person()
+        ppl = sir.Person()
         self.ppl = ppl
         
     def test_get_state(self):
@@ -31,7 +31,7 @@ class TestSIR(unittest.TestCase):
     """
     
     def setUp(self):
-        self.pop = [Person() for i in range(30)]
+        self.pop = [sir.Person() for i in range(30)]
         for i in range(10):
             self.pop[i].infected()
         for i in range(10, 20):
@@ -66,7 +66,7 @@ class TestODE(unittest.TestCase):
         k = 1/3
         T = 100
         I0 = 5
-        sol = ODE_simulation(N,b,k,T,I0)
+        sol = sir.ODE_simulation(N,b,k,T,I0)
         
         for j in range(1, 10):
             if j * 10 > len(sol.y[0])-1:
@@ -100,7 +100,7 @@ class TestODE(unittest.TestCase):
         k = 2/3
         T = 100
         I0 = 20
-        sol = ODE_simulation(N,b,k,T,I0)
+        sol = sir.ODE_simulation(N,b,k,T,I0)
         
         for j in range(1, 10):
             if j * 10 > len(sol.y[0])-1:
